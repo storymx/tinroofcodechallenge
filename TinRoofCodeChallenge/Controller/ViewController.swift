@@ -34,6 +34,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
+    let  backgroundImage: UIImageView = {
+        let iv = UIImageView(image: #imageLiteral(resourceName: "me").withRenderingMode(.alwaysOriginal))
+        iv.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        iv.contentMode = .scaleAspectFit
+        return iv
+    }()
+    
+    let blurView: UIVisualEffectView = {
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
+        let visualEffect = UIVisualEffectView(effect: blurEffect)
+        
+        visualEffect.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        return visualEffect
+    }()
+    
     lazy var tableContainer:UITableView = {
         let tv = UITableView()
         
@@ -49,8 +65,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        view.backgroundColor = .white
         
         NHService.shared.makeGETCall(url: EndPoints.posts) { (users) in
             self.users = users

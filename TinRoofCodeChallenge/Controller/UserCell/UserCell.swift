@@ -78,7 +78,7 @@ class UserCell: UITableViewCell{
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        backgroundColor = .blueLight
+        backgroundColor = .clear
         setupViews()
     }
     
